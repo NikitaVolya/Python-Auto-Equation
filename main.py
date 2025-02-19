@@ -75,7 +75,9 @@ class Program:
     @staticmethod
     def get_result(equations: list[str]) -> None:
         letters = Program.get_letters(equations)
+
         values, res = Program.get_matrix(equations, letters)
+        assert values.Width == res.Height
         rep_matrix = values.Inverse() * res
         for i in range(len(letters)):
             print(letters[i], " = ", rep_matrix[i, 0])
@@ -83,8 +85,8 @@ class Program:
 def main():
     equations = [
         "3a + 2b = 5",
-        "4b + c = 8",
-        "2a - c = -14"
+        "4b + 2c = 8",
+        "3c + a = 2"
     ]
     Program.get_result(equations)
 
